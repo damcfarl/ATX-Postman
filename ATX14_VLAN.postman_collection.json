@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "aed309e9-741d-4914-a1b4-1b52d6283c88",
+		"name": "ATX14_VLAN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "APIC_Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"aaaUser\":{\n    \"attributes\":{\n      \"name\":\"{{username}}\",\n      \"pwd\":\"{{password}}\"\n                 }\n            }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/aaaLogin.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"aaaLogin.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VRF",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://14.2.172.131/api/node/mo/uni/tn-ATX14/ctx-Prod.json",
+					"protocol": "https",
+					"host": [
+						"14",
+						"2",
+						"172",
+						"131"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-ATX14",
+						"ctx-Prod.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BD-VRF",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/BD-{{bridgedomain}}.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"BD-{{bridgedomain}}.json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
