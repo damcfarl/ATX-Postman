@@ -1,0 +1,1170 @@
+{
+	"info": {
+		"_postman_id": "48019b8e-21af-45f6-bba3-68d83cc950fd",
+		"name": "ATX14-kitchensink",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "APIC_Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"aaaUser\":{\n    \"attributes\":{\n      \"name\":\"{{username}}\",\n      \"pwd\":\"{{password}}\"\n                 }\n            }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/aaaLogin.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"aaaLogin.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fabric_discovery-leaf201",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fabricNodeIdentP\": {\n        \"attributes\": {\n            \"dn\": \"uni/controller/nodeidentpol/nodep-TEP-1-101\",\n            \"serial\": \"TEP-1-101\",\n            \"nodeId\": \"201\",\n            \"name\": \"leaf201\",\n            \"status\": \"created,modified\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/controller/nodeidentpol.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"controller",
+						"nodeidentpol.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fabric_discovery-spine101",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fabricNodeIdentP\": {\n        \"attributes\": {\n            \"dn\": \"uni/controller/nodeidentpol/nodep-TEP-1-103\",\n            \"serial\": \"TEP-1-103\",\n            \"nodeId\": \"101\",\n            \"name\": \"spine101\",\n            \"status\": \"created,modified\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/controller/nodeidentpol.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"controller",
+						"nodeidentpol.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fabric_discovery-leaf202",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fabricNodeIdentP\": {\n        \"attributes\": {\n            \"dn\": \"uni/controller/nodeidentpol/nodep-TEP-1-102\",\n            \"serial\": \"TEP-1-102\",\n            \"nodeId\": \"202\",\n            \"name\": \"leaf202\",\n            \"status\": \"created,modified\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/controller/nodeidentpol.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"controller",
+						"nodeidentpol.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fabric_ntp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"datetimePol\": {\n        \"attributes\": {\n            \"dn\": \"uni/fabric/time-Prod_NTP\",\n            \"name\": \"Prod_NTP\",\n            \"rn\": \"time-Prod_NTP\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"datetimeNtpProv\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/fabric/time-Prod_NTP/ntpprov-14.2.172.30\",\n                        \"name\": \"14.2.172.30\",\n                        \"preferred\": \"true\",\n                        \"rn\": \"ntpprov-14.2.172.30\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": [\n                        {\n                            \"datetimeRsNtpProvToEpg\": {\n                                \"attributes\": {\n                                    \"tDn\": \"uni/tn-mgmt/mgmtp-default/oob-default\",\n                                    \"status\": \"created\"\n                                },\n                                \"children\": []\n                            }\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/fabric/time-Prod_NTP.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"fabric",
+						"time-Prod_NTP.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fabric_RouteReflector",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bgpRRNodePEp\": {\n        \"attributes\": {\n            \"dn\": \"uni/fabric/bgpInstP-default/rr/node-101\",\n            \"id\": \"101\",\n            \"rn\": \"node-101\",\n            \"status\": \"created\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/fabric/bgpInstP-default/rr/node-101.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"fabric",
+						"bgpInstP-default",
+						"rr",
+						"node-101.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fabric_PodPolicyGroup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fabricPodPGrp\": {\n        \"attributes\": {\n            \"dn\": \"uni/fabric/funcprof/podpgrp-Prod_PodPolGrp\",\n            \"name\": \"Prod_PodPolGrp\",\n            \"rn\": \"podpgrp-Prod_PodPolGrp\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"fabricRsTimePol\": {\n                    \"attributes\": {\n                        \"tnDatetimePolName\": \"Prod_NTP\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"fabricRsPodPGrpBGPRRP\": {\n                    \"attributes\": {\n                        \"tnBgpInstPolName\": \"default\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/fabric/funcprof/podpgrp-Prod_PodPolGrp.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"fabric",
+						"funcprof",
+						"podpgrp-Prod_PodPolGrp.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "L2Domain",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"physDomP\": {\n        \"attributes\": {\n            \"dn\": \"uni/phys-ProdL2\",\n            \"name\": \"ProdL2\",\n            \"rn\": \"phys-ProdL2\",\n            \"status\": \"created\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/phys-ProdL2.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"phys-ProdL2.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VLANPool",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fvnsVlanInstP\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/vlanns-[Prod-VLANPool]-dynamic\",\n            \"name\": \"Prod-VLANPool\",\n            \"rn\": \"vlanns-[Prod-VLANPool]-dynamic\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"fvnsEncapBlk\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/infra/vlanns-[Prod-VLANPool]-dynamic/from-[vlan-1000]-to-[vlan-1099]\",\n                        \"from\": \"vlan-1000\",\n                        \"to\": \"vlan-1099\",\n                        \"allocMode\": \"dynamic\",\n                        \"rn\": \"from-[vlan-1000]-to-[vlan-1099]\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"fvnsEncapBlk\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/infra/vlanns-[Prod-VLANPool]-dynamic/from-[vlan-1100]-to-[vlan-1300]\",\n                        \"from\": \"vlan-1100\",\n                        \"to\": \"vlan-1300\",\n                        \"allocMode\": \"static\",\n                        \"rn\": \"from-[vlan-1100]-to-[vlan-1300]\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/vlanns-[Prod-VLANPool]-dynamic.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"vlanns-[Prod-VLANPool]-dynamic.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AEP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"infraInfra\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra\",\n            \"status\": \"modified\"\n        },\n        \"children\": [\n            {\n                \"infraAttEntityP\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/infra/attentp-Prod-AEP\",\n                        \"name\": \"Prod-AEP\",\n                        \"rn\": \"attentp-Prod-AEP\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"infraFuncP\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/infra/funcprof\",\n                        \"status\": \"modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CDP-Enable",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cdpIfPol\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/cdpIfP-CDP-Enable\",\n            \"name\": \"CDP-Enable\",\n            \"rn\": \"cdpIfP-CDP-Enable\",\n            \"status\": \"created\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/cdpIfP-CDP-Enable.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"cdpIfP-CDP-Enable.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LLDP-Enable",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lldpIfPol\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/lldpIfP-LLDP-Enable\",\n            \"name\": \"LLDP-Enable\",\n            \"rn\": \"lldpIfP-LLDP-Enable\",\n            \"status\": \"created\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/lldpIfP-LLDP-Enable.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"lldpIfP-LLDP-Enable.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LACP-Active",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lacpLagPol\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/lacplagp-LACP-Active\",\n            \"name\": \"LACP-Active\",\n            \"mode\": \"active\",\n            \"rn\": \"lacplagp-LACP-Active\",\n            \"status\": \"created\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/lacplagp-LACP-Active.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"lacplagp-LACP-Active.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AccessPortGroup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"infraAccPortGrp\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/funcprof/accportgrp-Acess-PG\",\n            \"name\": \"Acess-PG\",\n            \"rn\": \"accportgrp-Acess-PG\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"infraRsCdpIfPol\": {\n                    \"attributes\": {\n                        \"tnCdpIfPolName\": \"CDP-Enable\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"infraRsAttEntP\": {\n                    \"attributes\": {\n                        \"tDn\": \"uni/infra/attentp-Prod-AEP\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"infraRsLldpIfPol\": {\n                    \"attributes\": {\n                        \"tnLldpIfPolName\": \"LLDP-Enable\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/funcprof/accportgrp-Acess-PG.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"funcprof",
+						"accportgrp-Acess-PG.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VPC-PortGrooup-Odd",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"infraAccBndlGrp\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/funcprof/accbundle-VPC-Odd\",\n            \"lagT\": \"node\",\n            \"name\": \"VPC-Odd\",\n            \"rn\": \"accbundle-VPC-Odd\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"infraRsAttEntP\": {\n                    \"attributes\": {\n                        \"tDn\": \"uni/infra/attentp-Prod-AEP\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"infraRsCdpIfPol\": {\n                    \"attributes\": {\n                        \"tnCdpIfPolName\": \"CDP-Enable\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"infraRsLldpIfPol\": {\n                    \"attributes\": {\n                        \"tnLldpIfPolName\": \"LLDP-Enable\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/funcprof/accbundle-VPC-Odd.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"funcprof",
+						"accbundle-VPC-Odd.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VPC-PortGroup-Even",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"infraAccBndlGrp\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/funcprof/accbundle-VPC-Even\",\n            \"lagT\": \"node\",\n            \"name\": \"VPC-Even\",\n            \"rn\": \"accbundle-VPC-Even\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"infraRsAttEntP\": {\n                    \"attributes\": {\n                        \"tDn\": \"uni/infra/attentp-Prod-AEP\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"infraRsCdpIfPol\": {\n                    \"attributes\": {\n                        \"tnCdpIfPolName\": \"CDP-Enable\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"infraRsLldpIfPol\": {\n                    \"attributes\": {\n                        \"tnLldpIfPolName\": \"LLDP-Enable\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/funcprof/accbundle-VPC-Even.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"funcprof",
+						"accbundle-VPC-Even.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IntProf201",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"infraAccPortP\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/accportprof-201-IntPro\",\n            \"name\": \"201-IntPro\",\n            \"rn\": \"accportprof-201-IntPro\",\n            \"status\": \"created,modified\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/accportprof-201-IntPro.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"accportprof-201-IntPro.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IntProf202",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"infraAccPortP\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/accportprof-202-IntPro\",\n            \"name\": \"202-IntPro\",\n            \"rn\": \"accportprof-202-IntPro\",\n            \"status\": \"created,modified\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/accportprof-202-IntPro.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"accportprof-202-IntPro.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SwProf201",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"infraNodeP\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/nprof-201-SwProf\",\n            \"name\": \"201-SwProf\",\n            \"rn\": \"nprof-201-SwProf\",\n            \"status\": \"created,modified\"\n        },\n        \"children\": [\n            {\n                \"infraLeafS\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/infra/nprof-201-SwProf/leaves-201-typ-range\",\n                        \"type\": \"range\",\n                        \"name\": \"201\",\n                        \"rn\": \"leaves-201-typ-range\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": [\n                        {\n                            \"infraNodeBlk\": {\n                                \"attributes\": {\n                                    \"dn\": \"uni/infra/nprof-201-SwProf/leaves-201-typ-range/nodeblk-ab9a518f89911f15\",\n                                    \"from_\": \"201\",\n                                    \"to_\": \"201\",\n                                    \"name\": \"ab9a518f89911f15\",\n                                    \"rn\": \"nodeblk-ab9a518f89911f15\",\n                                    \"status\": \"created\"\n                                },\n                                \"children\": []\n                            }\n                        }\n                    ]\n                }\n            },\n            {\n                \"infraRsAccPortP\": {\n                    \"attributes\": {\n                        \"tDn\": \"uni/infra/accportprof-201-IntPro\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/nprof-201-SwProf.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"nprof-201-SwProf.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SwProf202",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"infraNodeP\": {\n        \"attributes\": {\n            \"dn\": \"uni/infra/nprof-202-SwProf\",\n            \"name\": \"202-SwProf\",\n            \"rn\": \"nprof-202-SwProf\",\n            \"status\": \"created,modified\"\n        },\n        \"children\": [\n            {\n                \"infraLeafS\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/infra/nprof-202-SwProf/leaves-202-typ-range\",\n                        \"type\": \"range\",\n                        \"name\": \"202\",\n                        \"rn\": \"leaves-202-typ-range\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": [\n                        {\n                            \"infraNodeBlk\": {\n                                \"attributes\": {\n                                    \"dn\": \"uni/infra/nprof-202-SwProf/leaves-202-typ-range/nodeblk-5214e209069b7654\",\n                                    \"from_\": \"202\",\n                                    \"to_\": \"202\",\n                                    \"name\": \"5214e209069b7654\",\n                                    \"rn\": \"nodeblk-5214e209069b7654\",\n                                    \"status\": \"created\"\n                                },\n                                \"children\": []\n                            }\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/infra/nprof-202-SwProf.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"infra",
+						"nprof-202-SwProf.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateTenant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fvTenant\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}\",\n            \"name\": \"{{tenant}}\",\n            \"rn\": \"tn-{{tenant}}\",\n            \"status\": \"created\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateVRF",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fvCtx\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}/ctx-{{tenant}}-Prod\",\n            \"name\": \"{{tenant}}-Prod\",\n            \"rn\": \"ctx-{{tenant}}-Prod\",\n            \"status\": \"created\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/ctx-{{tenant}}-Prod.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"ctx-{{tenant}}-Prod.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BD-DB",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fvBD\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}/BD-DB\",\n            \"mac\": \"00:22:BD:F8:19:FF\",\n            \"name\": \"DB\",\n            \"rn\": \"BD-DB\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"fvSubnet\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/BD-DB/subnet-[10.5.2.1/24]\",\n                        \"ctrl\": \"\",\n                        \"ip\": \"10.5.2.1/24\",\n                        \"rn\": \"subnet-[10.5.2.1/24]\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"fvRsCtx\": {\n                    \"attributes\": {\n                        \"tnFvCtxName\": \"{{tenant}}-Prod\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/BD-DB.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"BD-DB.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BD-WEB",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fvBD\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}/BD-WEB\",\n            \"mac\": \"00:22:BD:F8:19:FF\",\n            \"name\": \"WEB\",\n            \"rn\": \"BD-WEB\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"fvSubnet\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/BD-WEB/subnet-[10.5.1.1/24]\",\n                        \"ctrl\": \"\",\n                        \"ip\": \"10.5.1.1/24\",\n                        \"rn\": \"subnet-[10.5.1.1/24]\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"fvRsCtx\": {\n                    \"attributes\": {\n                        \"tnFvCtxName\": \"{{tenant}}-Prod\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/BD-WEB.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"BD-WEB.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BD-APP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fvBD\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}/BD-APP\",\n            \"mac\": \"00:22:BD:F8:19:FF\",\n            \"name\": \"APP\",\n            \"rn\": \"BD-APP\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"fvSubnet\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/BD-APP/subnet-[10.5.3.1/24]\",\n                        \"ctrl\": \"\",\n                        \"ip\": \"10.5.3.1/24\",\n                        \"rn\": \"subnet-[10.5.3.1/24]\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"fvRsCtx\": {\n                    \"attributes\": {\n                        \"tnFvCtxName\": \"{{tenant}}-Prod\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/BD-APP.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"BD-APP.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateANP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fvAp\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}/ap-BigApp\",\n            \"name\": \"BigApp\",\n            \"rn\": \"ap-BigApp\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"fvAEPg\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/ap-BigApp/epg-APP\",\n                        \"name\": \"APP\",\n                        \"rn\": \"epg-APP\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": [\n                        {\n                            \"fvRsBd\": {\n                                \"attributes\": {\n                                    \"tnFvBDName\": \"APP\",\n                                    \"status\": \"created,modified\"\n                                },\n                                \"children\": []\n                            }\n                        }\n                    ]\n                }\n            },\n            {\n                \"fvAEPg\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/ap-BigApp/epg-DB\",\n                        \"name\": \"DB\",\n                        \"rn\": \"epg-DB\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": [\n                        {\n                            \"fvRsBd\": {\n                                \"attributes\": {\n                                    \"tnFvBDName\": \"DB\",\n                                    \"status\": \"created,modified\"\n                                },\n                                \"children\": []\n                            }\n                        }\n                    ]\n                }\n            },\n            {\n                \"fvAEPg\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/ap-BigApp/epg-WEB\",\n                        \"name\": \"WEB\",\n                        \"rn\": \"epg-WEB\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": [\n                        {\n                            \"fvRsBd\": {\n                                \"attributes\": {\n                                    \"tnFvBDName\": \"WEB\",\n                                    \"status\": \"created,modified\"\n                                },\n                                \"children\": []\n                            }\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/ap-BigApp.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"ap-BigApp.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EPG-APP-StaticPath",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fvRsPathAtt\": {\n        \"attributes\": {\n            \"encap\": \"vlan-1201\",\n            \"tDn\": \"topology/pod-1/paths-201/pathep-[eth1/1]\",\n            \"status\": \"created\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/ap-BigApp/epg-APP.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"ap-BigApp",
+						"epg-APP.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EPG-WEB-StaticPath",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fvRsPathAtt\": {\n        \"attributes\": {\n            \"encap\": \"vlan-1230\",\n            \"tDn\": \"topology/pod-1/paths-201/pathep-[eth1/30]\",\n            \"status\": \"created\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/ap-BigApp/epg-WEB.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"ap-BigApp",
+						"epg-WEB.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EPG-DB-StaticPath",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fvRsPathAtt\": {\n        \"attributes\": {\n            \"encap\": \"vlan-1220\",\n            \"tDn\": \"topology/pod-1/paths-201/pathep-[eth1/10]\",\n            \"status\": \"created\"\n        },\n        \"children\": []\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/ap-BigApp/epg-DB.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"ap-BigApp",
+						"epg-DB.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filterWEB",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vzFilter\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}/flt-WEB\",\n            \"name\": \"WEB\",\n            \"rn\": \"flt-WEB\",\n            \"status\": \"created,modified\"\n        },\n        \"children\": [\n            {\n                \"vzEntry\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/flt-WEB/e-HTTPS\",\n                        \"name\": \"HTTPS\",\n                        \"etherT\": \"ip\",\n                        \"prot\": \"tcp\",\n                        \"dFromPort\": \"80\",\n                        \"dToPort\": \"80\",\n                        \"rn\": \"e-HTTPS\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"vzEntry\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/flt-WEB/e-WEB\",\n                        \"name\": \"WEB\",\n                        \"etherT\": \"ip\",\n                        \"prot\": \"tcp\",\n                        \"dFromPort\": \"80\",\n                        \"dToPort\": \"80\",\n                        \"rn\": \"e-WEB\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/flt-WEB.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"flt-WEB.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filterDB",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vzFilter\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}/flt-DB\",\n            \"name\": \"DB\",\n            \"rn\": \"flt-DB\",\n            \"status\": \"created,modified\"\n        },\n        \"children\": [\n            {\n                \"vzEntry\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/flt-DB/e-MYSQL\",\n                        \"name\": \"MYSQL\",\n                        \"etherT\": \"ip\",\n                        \"prot\": \"tcp\",\n                        \"dFromPort\": \"3306\",\n                        \"dToPort\": \"3306\",\n                        \"rn\": \"e-MYSQL\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/flt-DB.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"flt-DB.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filterSSH-ICMP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vzFilter\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}/flt-SSH-ICMP\",\n            \"name\": \"SSH-ICMP\",\n            \"rn\": \"flt-SSH-ICMP\",\n            \"status\": \"created,modified\"\n        },\n        \"children\": [\n            {\n                \"vzEntry\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/flt-SSH-ICMP/e-ICMP\",\n                        \"name\": \"ICMP\",\n                        \"etherT\": \"ip\",\n                        \"prot\": \"igmp\",\n                        \"rn\": \"e-ICMP\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            },\n            {\n                \"vzEntry\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/flt-SSH-ICMP/e-SSH\",\n                        \"name\": \"SSH\",\n                        \"etherT\": \"ip\",\n                        \"prot\": \"tcp\",\n                        \"dFromPort\": \"22\",\n                        \"dToPort\": \"22\",\n                        \"rn\": \"e-SSH\",\n                        \"status\": \"created,modified\"\n                    },\n                    \"children\": []\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/flt-SSH-ICMP.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"flt-SSH-ICMP.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ContractWEB",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vzBrCP\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}/brc-WEB\",\n            \"name\": \"WEB\",\n            \"rn\": \"brc-WEB\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"vzSubj\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/brc-WEB/subj-WEB\",\n                        \"name\": \"WEB\",\n                        \"rn\": \"subj-WEB\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": [\n                        {\n                            \"vzRsSdwanPol\": {\n                                \"attributes\": {\n                                    \"tDn\": \"uni/tn-common/sdwanpolcont/sdwanslapol-\",\n                                    \"status\": \"created,modified\"\n                                },\n                                \"children\": []\n                            }\n                        },\n                        {\n                            \"vzRsSubjFiltAtt\": {\n                                \"attributes\": {\n                                    \"status\": \"created,modified\",\n                                    \"tnVzFilterName\": \"WEB\",\n                                    \"directives\": \"none\"\n                                },\n                                \"children\": []\n                            }\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/brc-WEB.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"brc-WEB.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ContractDB",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vzBrCP\": {\n        \"attributes\": {\n            \"dn\": \"uni/tn-{{tenant}}/brc-DB\",\n            \"name\": \"DB\",\n            \"rn\": \"brc-DB\",\n            \"status\": \"created\"\n        },\n        \"children\": [\n            {\n                \"vzSubj\": {\n                    \"attributes\": {\n                        \"dn\": \"uni/tn-{{tenant}}/brc-DB/subj-DB\",\n                        \"name\": \"DB\",\n                        \"rn\": \"subj-DB\",\n                        \"status\": \"created\"\n                    },\n                    \"children\": [\n                        {\n                            \"vzRsSdwanPol\": {\n                                \"attributes\": {\n                                    \"tDn\": \"uni/tn-common/sdwanpolcont/sdwanslapol-\",\n                                    \"status\": \"created,modified\"\n                                },\n                                \"children\": []\n                            }\n                        },\n                        {\n                            \"vzRsSubjFiltAtt\": {\n                                \"attributes\": {\n                                    \"status\": \"created,modified\",\n                                    \"tnVzFilterName\": \"DB\",\n                                    \"directives\": \"none\"\n                                },\n                                \"children\": []\n                            }\n                        }\n                    ]\n                }\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/brc-DB.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"brc-DB.json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
