@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "aed309e9-741d-4914-a1b4-1b52d6283c88",
+		"name": "ATX14-Migrate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "APIC_Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"aaaUser\":{\r\n    \"attributes\":{\r\n      \"name\":\"{{username}}\",\r\n      \"pwd\":\"{{password}}\"\r\n                 }\r\n            }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/aaaLogin.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"aaaLogin.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tenant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n      \"fvTenant\": {\n        \"attributes\": {\n          \"annotation\": \"\",\n          \"descr\": \"\",\n          \"dn\": \"uni/tn-{{tenant}}\",\n          \"name\": \"{{tenant}}\",\n          \"nameAlias\": \"\",\n          \"ownerKey\": \"\",\n          \"ownerTag\": \"\"\n        },\n        \"children\": [\n          {\n            \"vnsSvcCont\": {\n              \"attributes\": {\n                \"annotation\": \"\"\n              }\n            }\n          }\n        }\n    }"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VRF",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"fvCtx\": {\n    \"attributes\": {\n      \"annotation\": \"\",\n      \"bdEnforcedEnable\": \"no\",\n      \"descr\": \"\",\n      \"dn\": \"uni/tn-{{tenant}}/ctx-{{vrf}}\",\n      \"ipDataPlaneLearning\": \"enabled\",\n      \"knwMcastAct\": \"permit\",\n      \"name\": \"{{vrf}}\",\n      \"nameAlias\": \"\",\n      \"ownerKey\": \"\",\n      \"ownerTag\": \"\",\n      \"pcEnfDir\": \"ingress\",\n      \"pcEnfPref\": \"enforced\"\n    },\n    \"children\": [\n      {\n        \"fvRsVrfValidationPol\": {\n          \"attributes\": {\n            \"annotation\": \"\",\n            \"tnL3extVrfValidationPolName\": \"\"\n          }\n        }\n      }\n    ]\n  }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/ctx-Prod.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"ctx-Prod.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BD-VRF",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"fvBD\": {\n    \"attributes\": {\n      \"OptimizeWanBandwidth\": \"no\",\n      \"annotation\": \"\",\n      \"arpFlood\": \"no\",\n      \"descr\": \"\",\n      \"dn\": \"uni/tn-{{tenant}}/BD-{{bridgedomain}}\",\n      \"epClear\": \"no\",\n      \"epMoveDetectMode\": \"\",\n      \"hostBasedRouting\": \"no\",\n      \"intersiteBumTrafficAllow\": \"no\",\n      \"intersiteL2Stretch\": \"no\",\n      \"ipLearning\": \"yes\",\n      \"limitIpLearnToSubnets\": \"yes\",\n      \"llAddr\": \"::\",\n      \"mac\": \"0{{mac}}}}\",\n      \"mcastAllow\": \"no\",\n      \"multiDstPktAct\": \"bd-flood\",\n      \"name\": \"{{bridgedomain}}\",\n      \"nameAlias\": \"\",\n      \"ownerKey\": \"\",\n      \"ownerTag\": \"\",\n      \"type\": \"regular\",\n      \"unicastRoute\": \"yes\",\n      \"unkMacUcastAct\": \"proxy\",\n      \"unkMcastAct\": \"flood\",\n      \"v6unkMcastAct\": \"flood\",\n      \"vmac\": \"not-applicable\"\n    },\n    \"children\": [\n      {\n        \"fvSubnet\": {\n          \"attributes\": {\n            \"annotation\": \"\",\n            \"ctrl\": \"\",\n            \"descr\": \"\",\n            \"ip\": \"{{gateway}}/{{mask}}\",\n            \"name\": \"\",\n            \"nameAlias\": \"\",\n            \"preferred\": \"no\",\n            \"scope\": \"private\",\n            \"status\": \"{{status}}\",\n            \"virtual\": \"no\"\n          }\n        }\n      },\n      {\n        \"fvRsMldsn\": {\n          \"attributes\": {\n            \"annotation\": \"\",\n            \"tnMldSnoopPolName\": \"\"\n          }\n        }\n      },\n      {\n        \"fvRsIgmpsn\": {\n          \"attributes\": {\n            \"annotation\": \"\",\n            \"tnIgmpSnoopPolName\": \"\"\n          }\n        }\n      },\n      {\n        \"fvRsCtx\": {\n          \"attributes\": {\n            \"annotation\": \"\",\n            \"tnFvCtxName\": \"{{vrf}}\"\n          }\n        }\n      },\n      {\n        \"fvRsBdToEpRet\": {\n          \"attributes\": {\n            \"annotation\": \"\",\n            \"resolveAct\": \"resolve\",\n            \"tnFvEpRetPolName\": \"\"\n          }\n        }\n      },\n      {\n        \"fvRsBDToNdP\": {\n          \"attributes\": {\n            \"annotation\": \"\",\n            \"tnNdIfPolName\": \"\"\n          }\n        }\n      }\n    ]\n  }\n}"
+				},
+				"url": {
+					"raw": "https://{{apic}}/api/node/mo/uni/tn-{{tenant}}/BD-{{bridgedomain}}.json",
+					"protocol": "https",
+					"host": [
+						"{{apic}}"
+					],
+					"path": [
+						"api",
+						"node",
+						"mo",
+						"uni",
+						"tn-{{tenant}}",
+						"BD-{{bridgedomain}}.json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
